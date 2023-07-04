@@ -36,10 +36,18 @@ public class itens{
     public void editItem(int change, String newItem, double newPrice){
         for(int i = 0; i < itens.size(); i++){
             if((change - 1) == i){
-                itens.remove(i);
-                prices.remove(i);
-                itens.add(newItem);
-                prices.add(newPrice);
+                if(newPrice == -1967.43232){
+                    itens.remove(i);
+                    itens.add(newItem);
+                }else if(newItem == null){
+                    prices.remove(i);
+                    prices.add(newPrice);
+                }else if(newItem != null && newPrice != -1967.43234){
+                    itens.remove(i);
+                    prices.remove(i);
+                    itens.add(newItem);
+                    prices.add(newPrice);
+                }
             }
         }
     }

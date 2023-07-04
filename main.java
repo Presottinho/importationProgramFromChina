@@ -11,6 +11,7 @@ public class main{
 
         Scanner input = new Scanner(System.in);
         itens itens = new itens();
+        double frete = 0;
 
         int continua = 1;
 
@@ -26,26 +27,59 @@ public class main{
                 case 1:
                     System.out.println("Digite o item desejado:");
                     String item = input.next();
-                    System.out.println("Digite o preço em Yuan:");
+                    System.out.println("Digite o preco em Yuan:");
                     double price = input.nextDouble();
                     itens.addItens(item, price);
                 break;
 
                 case 2:
                     itens.exhibitionItem();
-                    System.out.println("Digite o numer o correspondente ao item que deseja editar: ");
+                    String newItem;
+                    double  newPrice;
+                    System.out.println("-------------------------------------");
+                    System.out.println("Digite o numero o correspondente ao item que deseja editar: ");
+                    System.out.println("-------------------------------------");
                     int change = input.nextInt();
-                    System.out.println("Digite o novo nome do item: ");
-                    String newItem = input.next();
-                    System.out.println("Digite o novo valor do item: ");
-                    double  newPrice = input.nextDouble();
-                    itens.editItem(change, newItem, newPrice);
+                    System.out.println("-------------------------------------");
+                    System.out.println("O que deseja editar? 1 - Nome | 2 - Preco | 3 - Ambos");
+                    System.out.println("-------------------------------------");
+                    int edit = input.nextInt();
+                    if(edit == 1){
+                        System.out.println("-------------------------------------");
+                        System.out.println("Digite o novo nome do item: ");
+                        System.out.println("-------------------------------------");
+                        newItem = input.next();
+                        newPrice = -1967.43232;
+                        itens.editItem(change, newItem, newPrice);
+                    }else if(edit == 2){
+                        System.out.println("-------------------------------------");
+                        System.out.println("Digite o novo valor do item: ");
+                        System.out.println("-------------------------------------");
+                        newPrice = input.nextDouble();
+                        newItem = null;
+                        itens.editItem(change, newItem, newPrice);
+                    }else if(edit == 3){
+                        System.out.println("-------------------------------------");
+                        System.out.println("Digite o novo nome do item: ");
+                        System.out.println("-------------------------------------");
+                        newItem = input.next();
+                        System.out.println("-------------------------------------");
+                        System.out.println("Digite o novo valor do item: ");
+                        System.out.println("-------------------------------------");
+                        newPrice = input.nextInt();
+                        itens.editItem(change, newItem, newPrice);
+                    }else{
+                        System.out.println("Opcao invalida. Tente novamente!");
+                    }
+                    
                     
                 break;
                 
                 case 3:
-                    System.out.println("Digite o frete em Yuan: ");
-                    double frete = input.nextDouble();
+                    if(frete == 0){
+                        System.out.println("Digite o frete em Yuan: ");
+                        frete = input.nextDouble();
+                    }
                     itens.showItens(cotacao, frete);
                     try {
                         Thread.sleep(3000);
@@ -59,7 +93,7 @@ public class main{
                 break;
 
                 default:
-                    System.out.println("Opção Inválida, tente novamente.");
+                    System.out.println("Opcao Invalida, tente novamente.");
                 break;
             }
 
