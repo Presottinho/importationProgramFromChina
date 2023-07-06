@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Arrays;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class itens{
@@ -10,18 +11,19 @@ public class itens{
     public void addItens(String item, double price){
         itens.add(item);
         prices.add(price);
-
     }
 
     public void showItens(double cotacao, double frete){
+        DecimalFormat df = new DecimalFormat("###,##0.00");
         double total = 0;
+        frete = (frete * cotacao);
         System.out.println("-------------------------------------");
         for(int i = 0; i < itens.size(); i++){
-            System.out.println((i + 1) + "." + itens.get(i) + " - " + "R$" + (prices.get(i) * cotacao));
+            System.out.println((i + 1) + "." + itens.get(i) + " - " + "R$" + (df.format(prices.get(i) * cotacao)));
             total = total + (prices.get(i) * cotacao);
         }
         System.out.println("-------------------------------------");
-        System.out.println("Valor total: R$" + total + " | Frete: " + (frete * cotacao) + " | Valor total com frete: R$" + (total + (frete * cotacao)));
+        System.out.println("Valor total: R$" + df.format(total) + " | Frete: " + df.format(frete)  + " | Valor total com frete: R$" + df.format(frete));
         System.out.println("-------------------------------------");
     }
 
